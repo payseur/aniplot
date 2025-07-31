@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aniplot"
+version = "0.1.0"
+description = "Modular animated plotting library"
+authors = [{ name="Scott Payseur", email="scott.payseur.phd@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+
+[project.urls]
+Homepage = "https://github.com/payseur/aniplot"
