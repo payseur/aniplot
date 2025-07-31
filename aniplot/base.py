@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import numpy as np
 
 class BasePlot(ABC):
     def __init__(self, ax, data=None, title=None):
@@ -11,6 +12,11 @@ class BasePlot(ABC):
         """Initial setup for the plot (axes, titles, limits, etc)."""
         if self.title:
             self.ax.set_title(self.title)
+        self.ax.set_xlim(0, self.data.shape[0])
+        
+        
+        self.ax.set_ylim(np.floor(np.nanmin(self.data)), np.floor(np.nanmax(self.data)))
+
         self._initialized = True
 
     @abstractmethod
@@ -22,3 +28,6 @@ class BasePlot(ABC):
         # Optional default behavior: clear axis title and lines if needed
         self.ax.cla()
         self.ax.set_title(self.title)
+
+    def plot(self):
+      for i in range(len(self.data)): self.update(i)
